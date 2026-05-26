@@ -51,22 +51,22 @@ docker logs aria2 | grep "RPC Secret"
 
 ```yaml
 services:
-  aria2:
-    image: ghcr.io/snowmoonss/aria2-docker:latest
-    container_name: aria2
-    ports:
-      - "6800:6800"
-      - "6881:6881/tcp"
-      - "6881:6881/udp"
-    volumes:
-      - ./config:/config
-      - ./downloads:/downloads
-    environment:
-      - PUID=1000 #可选
-      - PGID=1000 #可选
-      - UMASK=022 #可选
-      - TZ=Asia/Shanghai #可选
-    restart: unless-stopped
+    aria2:
+        image: ghcr.io/snowmoonss/aria2-docker:latest
+        container_name: aria2
+        ports:
+            - "6800:6800"
+            - "6881:6881/tcp"
+            - "6881:6881/udp"
+        volumes:
+            - ./config:/config
+            - ./downloads:/downloads
+        environment:
+            - PUID=1000 #可选
+            - PGID=1000 #可选
+            - UMASK=022 #可选
+            - TZ=Asia/Shanghai #可选
+        restart: unless-stopped
 ```
 
 启动：
