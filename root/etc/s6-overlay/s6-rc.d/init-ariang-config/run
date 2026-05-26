@@ -1,0 +1,32 @@
+#!/usr/bin/with-contenv bash
+# shellcheck shell=bash
+
+# make our folder
+mkdir -p /config
+
+# copy default config
+if [[ ! -f /config/aria2.conf ]]; then
+    cp /defaults/aria2.conf /config/aria2.conf
+    # generate 14-character rpc secret
+    RPC_SECRET=$(head /dev/urandom | tr -dc 'a-zA-Z0-9' | head -c 14)
+    sed -i "s|^#rpc-secret=$|rpc-secret=${RPC_SECRET}|" /config/aria2.conf
+    echo "RPC Secret: ${RPC_SECRET}"
+fi
+
+if [[ -d "/config/aria2.session" ]]; then
+    echo "ERROR: /config/aria2.session is a directory, please delete it and restart the container."
+    exit 1
+elif [[ ! -f "/config/aria2.session" ]]; then
+    touch "/config/aria2.session"
+fi
+
+if [[ -z ${LSIO_NON_ROOT_USER} ]]; then
+    # chown download directory if currently not set to abc
+    if grep -qe ' /downloads ' /proc/mounts; then
+        lsiown abc:abc /downloads
+    fi
+
+    # permissions
+    lsiown -R abc:abc \
+        /config
+fi
