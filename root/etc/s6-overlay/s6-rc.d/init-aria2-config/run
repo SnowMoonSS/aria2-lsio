@@ -1,0 +1,21 @@
+#!/usr/bin/with-contenv bash
+# shellcheck shell=bash
+
+# make our folder
+mkdir -p /config
+
+# copy default config
+if [[ ! -f /config/aria2.conf ]]; then
+    cp /defaults/aria2.conf /config/aria2.conf
+fi
+
+if [[ -z ${LSIO_NON_ROOT_USER} ]]; then
+    # chown download directory if currently not set to abc
+    if grep -qe ' /downloads ' /proc/mounts; then
+        lsiown abc:abc /downloads
+    fi
+
+    # permissions
+    lsiown -R abc:abc \
+        /config
+fi
