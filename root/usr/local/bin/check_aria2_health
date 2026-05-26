@@ -1,0 +1,11 @@
+#!/usr/bin/with-contenv bash
+# shellcheck shell=bash
+
+RPC_PORT=$(grep -Po "^rpc-listen-port=\K(.*)" /config/aria2.conf)
+
+response=$(curl -s -X POST "http://localhost:${RPC_PORT:-6800}/jsonrpc" \
+    -H "Content-Type: application/json" \
+    -d '{"jsonrpc":"2.0","method":"aria2.getVersion","id":"healthcheck","params":[]}' \
+    2>/dev/null)
+
+echo "${response}" | grep -q '"result"'
