@@ -1,6 +1,6 @@
 # aria2-docker
 
-基于 Alpine 的轻量级 aria2 Docker 镜像，开箱即用，自动生成 RPC 密钥。
+基于 Alpine 的轻量级 aria2 Docker 镜像，内置 AriaNG。开箱即用，自动生成 RPC 密钥。
 
 [![Docker Image CI](https://github.com/snowmoonss/aria2-docker/actions/workflows/docker-image.yml/badge.svg)](https://github.com/snowmoonss/aria2-docker/actions/workflows/docker-image.yml)
 
