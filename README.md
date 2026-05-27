@@ -4,18 +4,11 @@
 
 [![Docker Image CI](https://github.com/snowmoonss/aria2-docker/actions/workflows/docker-image.yml/badge.svg)](https://github.com/snowmoonss/aria2-docker/actions/workflows/docker-image.yml)
 
-## 特性
-
-- 基于 `ghcr.io/linuxserver/baseimage-alpine:edge`，镜像体积小
-- 首次启动自动复制默认配置文件到 `/config`
-- 自动生成 14 位随机 RPC 密钥，并打印到控制台
-- 内置 RPC 健康检查，确保服务就绪
-- 非 root 用户运行（`abc`）
-
 ## 端口
 
 | 端口 | 用途 |
 |---|---|
+| `80` | AriaNG |
 | `6800` | JSON-RPC |
 | `6881-6999` TCP/UDP | BT 下载 |
 
