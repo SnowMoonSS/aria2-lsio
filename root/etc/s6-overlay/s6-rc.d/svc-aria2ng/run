@@ -3,10 +3,10 @@
 
 if [[ -z ${LSIO_NON_ROOT_USER} ]]; then
 exec \
-    s6-notifyoncheck -d -n 300 -w 1000 -c "curl -sf http://localhost:80/ > /dev/null" \
-        s6-setuidgid abc busybox httpd -f -h /app/ariang -p 80
+    s6-notifyoncheck -d -n 300 -w 1000 -c "curl -sf http://localhost:80/" \
+        s6-setuidgid abc darkhttpd /app/ariang --port 80
 else
 exec \
-    s6-notifyoncheck -d -n 300 -w 1000 -c "curl -sf http://localhost:80/ > /dev/null" \
-        busybox httpd -f -h /app/ariang -p 80
+    s6-notifyoncheck -d -n 300 -w 1000 -c "curl -sf http://localhost:80/" \
+        darkhttpd /app/ariang --port 80
 fi
