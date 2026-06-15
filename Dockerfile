@@ -17,7 +17,7 @@ RUN apk add --no-cache \
     unzip -q ariang.zip -d /app/ariang && \
     rm ariang.zip
 
-FROM ghcr.io/linuxserver/baseimage-alpine:edge
+FROM ghcr.io/linuxserver/baseimage-alpine:3.24
 
 RUN apk add --no-cache \
     aria2 \

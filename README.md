@@ -1,8 +1,8 @@
 # aria2-docker
 
-基于 Alpine 的轻量级 aria2 Docker 镜像，内置 AriaNG。开箱即用，自动生成 RPC 密钥。
+基于 [Linuxserver baseimage](https://github.com/linuxserver/docker-baseimage-alpine) 的轻量级 aria2 Docker 镜像，内置 AriaNG。开箱即用，自动生成 RPC 密钥。
 
-[![Docker Image CI](https://github.com/snowmoonss/aria2-docker/actions/workflows/docker-image.yml/badge.svg)](https://github.com/snowmoonss/aria2-docker/actions/workflows/docker-image.yml)
+[![Docker Image CI](https://github.com/snowmoonss/aria2-lsio/actions/workflows/docker-image.yml/badge.svg)](https://github.com/snowmoonss/aria2-lsio/actions/workflows/docker-image.yml)
 
 ## 端口
 
@@ -99,9 +99,5 @@ grep "^rpc-secret=" /path/to/config/aria2.conf
 ## 构建
 
 ```bash
-docker build -t aria2-docker:latest .
+docker build -t aria2:latest .
 ```
-
-## License
-
-MIT
