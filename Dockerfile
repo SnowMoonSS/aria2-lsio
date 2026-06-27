@@ -1,4 +1,4 @@
-FROM ghcr.io/linuxserver/baseimage-alpine:edge AS builder
+FROM ghcr.io/linuxserver/baseimage-alpine:3.24 AS builder
 
 WORKDIR /app
 
